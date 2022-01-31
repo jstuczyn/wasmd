@@ -95,6 +95,7 @@ func NewKeeper(
 	supportedFeatures string,
 	opts ...Option,
 ) Keeper {
+	wasmConfig.ContractDebugMode = true
 	wasmer, err := wasmvm.NewVM(filepath.Join(homeDir, "wasm"), supportedFeatures, contractMemoryLimit, wasmConfig.ContractDebugMode, wasmConfig.MemoryCacheSize)
 	if err != nil {
 		panic(err)
